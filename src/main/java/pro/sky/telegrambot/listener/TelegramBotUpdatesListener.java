@@ -15,28 +15,28 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class TelegramBotUpdatesListener implements UpdatesListener {
+public class  TelegramBotUpdatesListener implements UpdatesListener {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
+    private static final  Logger LOG = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
 
-    private final TelegramBot telegramBot;
-    private final UserService userService;
+    private final  TelegramBot telegramBot;
+    private final  UserService userService;
 
-    private final Map<Long, Status> usersStatus = new HashMap<>();
+    private final  Map<Long, Status> usersStatus = new HashMap<>();
 
-    public TelegramBotUpdatesListener(TelegramBot telegramBot, UserService userService) {
+    public  TelegramBotUpdatesListener(TelegramBot telegramBot, UserService userService) {
         this.telegramBot = telegramBot;
         this.userService = userService;
     }
 
 
     @Override
-    public int process(List<Update> updates) {
+    public int  process(List<Update> updates) {
         updates.stream().filter(update -> update.message() != null).forEach(this::handleUpdate);
         return CONFIRMED_UPDATES_ALL;
     }
 
-    private void handleUpdate(Update update) {
+    private void  handleUpdate(Update update) {
         Long chatId = update.message().chat().id();
         String text = update.message().text();
         Status status = usersStatus.get(update.message().chat().id());
@@ -57,7 +57,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                     telegramBot.execute(new SendMessage(chatId, userService.getUser(chatId).toString()));
                 }
             }
-        } else if (text.equals("/start")) {
+        } else  if (text.equals("/start")) {
             usersStatus.put(chatId, Status.LOGIN);
             telegramBot.execute(new SendMessage(chatId, "Почему я ничего не понимаю ?"));
         }
