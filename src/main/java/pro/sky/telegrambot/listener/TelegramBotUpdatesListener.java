@@ -7,7 +7,7 @@ import com.pengrad.telegrambot.request.SendMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import pro.sky.telegrambot.Service.NotificationService;
+import pro.sky.telegrambot.service.NotificationService;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;

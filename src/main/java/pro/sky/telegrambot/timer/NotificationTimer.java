@@ -4,7 +4,7 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pro.sky.telegrambot.Service.NotificationService;
+import pro.sky.telegrambot.service.NotificationService;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
