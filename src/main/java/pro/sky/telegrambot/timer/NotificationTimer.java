@@ -4,6 +4,7 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import pro.sky.telegrambot.entity.Notification;
 import pro.sky.telegrambot.service.NotificationService;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,10 @@ public class NotificationTimer {
         notificationService.getAllNotificationsForDate(now).forEach(
                 n -> telegramBot.execute(new SendMessage(n.getChatId(), String.format("вы просили напомнить о %s", n.getMessage()))));
     }
+@Scheduled
+    public void deleteNotification(Notification notification){
+       notificationService.deleteNotification(notification);
+}
 
 
 }

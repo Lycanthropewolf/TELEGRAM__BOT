@@ -36,4 +36,8 @@ public class NotificationService {
     public List<Notification> getAllNotificationsForDate(LocalDateTime date) {
         return repository.findAllByDateEquals(date.truncatedTo(ChronoUnit.MINUTES));
     }
+
+    public void deleteNotification(Notification notification) {
+        repository.deleteAllInBatch(notification);
+    }
 }
